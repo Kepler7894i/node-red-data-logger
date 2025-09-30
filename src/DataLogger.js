@@ -87,8 +87,9 @@ class  DataLogger{
             return false;
         }
     }
-    createLogFile(fileName,obj){
-        this.#filePath = this.#filePath + "\\" + fileName + this.#fileExtension; 
+    createLogFile(fileName, obj){
+		const path = require('path');
+        this.#filePath = path.join(this.#filePath, fileName + this.#fileExtension); 
         try {
             if (!fs.existsSync(this.#filePath)) {
                 fs.writeFileSync(this.#filePath, "");
